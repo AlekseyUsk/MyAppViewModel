@@ -7,7 +7,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel(application : Application) : AndroidViewModel(application) {
+class MainViewModel(application : Application,val text: String) : AndroidViewModel(application) {
+    //val text: String - ПЕРЕДАТЬ В ПАРАМЕТРЫ КАКОЙ ТО ТЕКСТ
 
     val liveData = MutableLiveData<String>()
 
@@ -20,7 +21,12 @@ class MainViewModel(application : Application) : AndroidViewModel(application) {
                liveData.value = ((p0/1000).toString())
             }
             override fun onFinish() {
-                Toast.makeText(getApplication(),"Тут применена AndroidViewModel у которой есть контекст",Toast.LENGTH_LONG).show()
+                Toast.makeText(getApplication(),text,Toast.LENGTH_LONG).show()
+                    //ВЫВЕСТИ К ПРИМЕРУ ТОСТ С ЭТИМ ТЕКСТОМ
+                    // override fun onCreate(savedInstanceState: Bundle?) {
+                //        super.onCreate(savedInstanceState)
+                //        setContentView(R.layout.activity_main)
+                //        viewModel = ViewModelProvider(this,Factory(application,"Я передал при помощи фабрики во вью модель текст - ПРИВЕТ!!!")).get(MainViewModel::class.java)
             }
         }.start()
     }

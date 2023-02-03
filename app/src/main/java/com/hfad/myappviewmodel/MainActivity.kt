@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this,Factory(application,"Я передал при помощи фабрики во вью модель текст - ПРИВЕТ!!!")).get(MainViewModel::class.java)
 
 
         textView = findViewById(R.id.textView)
